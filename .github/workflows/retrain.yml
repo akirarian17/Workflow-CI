@@ -18,11 +18,11 @@ jobs:
 
       - name: Build image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/weatheraus-rf:latest .
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/eksperimen_sml_akira-rian-satya-dhamma:latest .
 
       - name: Push image
         run: |
-          docker push ${{ secrets.DOCKER_USERNAME }}/weatheraus-rf:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/eksperimen_sml_akira-rian-satya-dhamma:latest
 
       - uses: actions/checkout@v4
 
