@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/I%20Made%20Riana/Downloads/Kuliah/PIJAK/SISTEM%20MACHINE%20LEARNING/Workflow-CI/MLProject/mlruns/0/models/m-b262062971cc45178fa47b16d11c3e98/artifacts
+creation_timestamp: 1780962276027
+experiment_id: '0'
+last_updated_timestamp: 1780962279027
+model_id: m-b262062971cc45178fa47b16d11c3e98
+model_type: null
+name: model
+source_run_id: 66977e5083e645379e58fc81f9b46cfa
+status: 3
+status_message: null
