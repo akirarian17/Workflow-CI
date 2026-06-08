@@ -37,7 +37,7 @@ def train_model(
     y_train,
     y_test
 ):
-    mlflow.set_tracking_uri("file:./mlruns")
+    # mlflow.set_tracking_uri("file:./mlruns")
     # mlflow.set_experiment("weatherAUS_Uluru_RF")
 
     mlflow.sklearn.autolog()
