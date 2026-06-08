@@ -31,6 +31,16 @@ jobs:
           name: trained-model
           path: MLProject/mlruns
 
+      - name: Check mlruns
+        run: |
+          find . -type d -name "mlruns"
+
+      - name: Commit MLflow artifacts
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update MLflow artifacts
+          file_pattern: MLProject/mlruns/*
+
       - name: Show files
         run: |
           pwd
