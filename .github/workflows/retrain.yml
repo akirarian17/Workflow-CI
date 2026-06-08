@@ -16,6 +16,9 @@ jobs:
 
       - run: pip install mlflow pandas numpy scikit-learn
 
-      - run: |
+      - name: Run MLflow Project
+        env:
+          MLFLOW_ALLOW_FILE_STORE: "true"
+        run: |
           cd MLProject
-          mlflow run .
+          mlflow run . --env-manager local
