@@ -35,7 +35,7 @@ jobs:
         run: |
           pwd
           ls -R
-          
+
       - uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -43,7 +43,7 @@ jobs:
 
       - name: Build image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/eksperimen_sml_akira-rian-satya-dhamma:latest ./MLProject
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/eksperimen_sml_akira-rian-satya-dhamma:latest ./MLProject/docker_test
 
       - name: Push image
         run: |
