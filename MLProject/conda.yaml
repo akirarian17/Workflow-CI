@@ -1,0 +1,14 @@
+name: weatherAUS_rf
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.12.13
+  - pip
+  - pip:
+      - pandas==2.3.3
+      - numpy==2.4.4
+      - scikit-learn==1.5.2
+      - mlflow==2.19.0
+      - dagshub==0.7.0
