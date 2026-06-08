@@ -15,7 +15,11 @@ DATASET_PATH = "weatherAUS_uluru_preprocessed.csv"
 
 
 def load_data(filepath):
-    return pd.read_csv(filepath)
+    try:
+        df = pd.read_csv(filepath)
+    except:
+        df = pd.read_csv(f"./MLProject/{filepath}")
+    return df
 
 
 def prepare_data(df):

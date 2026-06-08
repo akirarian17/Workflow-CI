@@ -1,0 +1,38 @@
+artifact_path: model
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.13
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.5.2
+mlflow_version: 2.19.0
+model_size_bytes: 1144178
+model_uuid: 543ec30c3b98448585b7dc700ce19337
+run_id: 0e548318f6a746228cffb269d8b06ab6
+signature:
+  inputs: '[{"type": "long", "name": "Location", "required": true}, {"type": "double",
+    "name": "MinTemp", "required": true}, {"type": "double", "name": "MaxTemp", "required":
+    true}, {"type": "double", "name": "Rainfall", "required": true}, {"type": "double",
+    "name": "WindGustDir", "required": true}, {"type": "double", "name": "WindGustSpeed",
+    "required": true}, {"type": "double", "name": "WindDir9am", "required": true},
+    {"type": "double", "name": "WindDir3pm", "required": true}, {"type": "double",
+    "name": "WindSpeed9am", "required": true}, {"type": "double", "name": "WindSpeed3pm",
+    "required": true}, {"type": "double", "name": "Humidity9am", "required": true},
+    {"type": "double", "name": "Humidity3pm", "required": true}, {"type": "double",
+    "name": "Pressure9am", "required": true}, {"type": "double", "name": "Pressure3pm",
+    "required": true}, {"type": "double", "name": "Temp9am", "required": true}, {"type":
+    "double", "name": "Temp3pm", "required": true}, {"type": "long", "name": "RainToday",
+    "required": true}, {"type": "double", "name": "Year", "required": true}, {"type":
+    "double", "name": "Month", "required": true}, {"type": "double", "name": "Day",
+    "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+utc_time_created: '2026-06-08 22:43:31.122539'
