@@ -1,0 +1,10 @@
+artifact_location: file:///home/runner/work/Workflow-CI/Workflow-CI/MLProject/mlruns/667659483073823522/models/m-6080b7927f9948ee89a93767dfe3c16c/artifacts
+creation_timestamp: 1780967415200
+experiment_id: '667659483073823522'
+last_updated_timestamp: 1780967418056
+model_id: m-6080b7927f9948ee89a93767dfe3c16c
+model_type: null
+name: random_forest_model
+source_run_id: b8a8a21287974bd7917b7dd7d274a953
+status: 2
+status_message: null
