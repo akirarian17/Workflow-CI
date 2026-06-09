@@ -86,7 +86,7 @@ def train_model(
         print(f"Recall    : {recall:.4f}")
         print(f"F1 Score  : {f1:.4f}")
 
-        with open("run_id.txt", "w") as f:
+        with open("../run_id.txt", "w") as f:
             f.write(run_id)
 
 
