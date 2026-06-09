@@ -10,6 +10,7 @@ from sklearn.metrics import (
     recall_score,
     f1_score
 )
+import os
 
 DATASET_PATH = "weatherAUS_uluru_preprocessed.csv"
 
@@ -41,8 +42,8 @@ def train_model(
     y_train,
     y_test
 ):
-    mlflow.set_tracking_uri("file:./mlruns")
-    mlflow.set_experiment("weatherAUS_Uluru_RF")
+    mlflow.set_tracking_uri(os.environ["MLFLOW_TRACKING_URI"])
+    mlflow.set_experiment("weatherAUS_uluru_RF")
 
 
     with mlflow.start_run():
