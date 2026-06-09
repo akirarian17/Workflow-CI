@@ -27,7 +27,7 @@ jobs:
       - name: Set MLflow environment
         run: |
           mkdir -p MLProject/mlruns
-          echo "MLFLOW_TRACKING_URI=file:./mlruns" >> $GITHUB_ENV
+          echo "MLFLOW_TRACKING_URI=file:/github/workspace/MLProject/mlruns" >> $GITHUB_ENV
           echo "MLFLOW_ALLOW_FILE_STORE=true" >> $GITHUB_ENV
       
       - name: Initialize MLflow experiment
@@ -35,13 +35,13 @@ jobs:
           python -c "
           import mlflow
           mlflow.set_tracking_uri('file:./mlruns')
-          mlflow.set_experiment('weatherAUS_Uluru_RF')
+          mlflow.create_experiment('weatherAUS_Uluru_RF')
           print('experiment initialized')"
 
       - name: Run MLflow Project
         run: |
           cd MLProject
-          mlflow run . --env-manager local
+          mlflow run . --env-manager local --experiment-name weatherAUS_Uluru_RF
 
       - name: Inspect MLflow artifacts
         run: |

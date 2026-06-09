@@ -42,8 +42,6 @@ def train_model(
     y_test
 ):
     mlflow.set_tracking_uri("file:./mlruns")
-    mlflow.set_experiment("weatherAUS_Uluru_RF")
-
 
     with mlflow.start_run():
         mlflow.sklearn.autolog()
