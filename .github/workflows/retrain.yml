@@ -24,12 +24,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install mlflow pandas numpy scikit-learn
 
+      - name: Prepare MLflow directory
+        run: |
+          mkdir -p MLProject/mlruns
+
       - name: Set MLflow environment
         run: |
           mkdir -p MLProject/mlruns
-          echo "MLFLOW_TRACKING_URI=file:/github/workspace/MLProject/mlruns" >> $GITHUB_ENV
+          echo "MLFLOW_TRACKING_URI=file:./MLProject/mlruns" >> $GITHUB_ENV
           echo "MLFLOW_ALLOW_FILE_STORE=true" >> $GITHUB_ENV
-      
+
       - name: Initialize MLflow experiment
         run: |
           python -c "
