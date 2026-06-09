@@ -1,0 +1,43 @@
+artifact_path: file:///home/runner/work/Workflow-CI/Workflow-CI/MLProject/mlruns/417924630574340598/models/m-c05570d868994a79afb41ae51f69d133/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.13
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.9.0
+    skops_trusted_types: null
+is_signature_from_type_hint: false
+mlflow_version: 3.13.0
+model_id: m-c05570d868994a79afb41ae51f69d133
+model_size_bytes: 1144230
+model_uuid: m-c05570d868994a79afb41ae51f69d133
+prompts: null
+run_id: 3d3fb70191ad4ae48d4d4009fe017fc6
+signature:
+  inputs: '[{"type": "long", "name": "Location", "required": true}, {"type": "double",
+    "name": "MinTemp", "required": true}, {"type": "double", "name": "MaxTemp", "required":
+    true}, {"type": "double", "name": "Rainfall", "required": true}, {"type": "double",
+    "name": "WindGustDir", "required": true}, {"type": "double", "name": "WindGustSpeed",
+    "required": true}, {"type": "double", "name": "WindDir9am", "required": true},
+    {"type": "double", "name": "WindDir3pm", "required": true}, {"type": "double",
+    "name": "WindSpeed9am", "required": true}, {"type": "double", "name": "WindSpeed3pm",
+    "required": true}, {"type": "double", "name": "Humidity9am", "required": true},
+    {"type": "double", "name": "Humidity3pm", "required": true}, {"type": "double",
+    "name": "Pressure9am", "required": true}, {"type": "double", "name": "Pressure3pm",
+    "required": true}, {"type": "double", "name": "Temp9am", "required": true}, {"type":
+    "double", "name": "Temp3pm", "required": true}, {"type": "long", "name": "RainToday",
+    "required": true}, {"type": "double", "name": "Year", "required": true}, {"type":
+    "double", "name": "Month", "required": true}, {"type": "double", "name": "Day",
+    "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-06-09 00:49:10.465526'

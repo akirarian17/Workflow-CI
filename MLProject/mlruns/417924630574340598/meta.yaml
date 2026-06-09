@@ -1,0 +1,9 @@
+artifact_location: file:///home/runner/work/Workflow-CI/Workflow-CI/MLProject/mlruns/417924630574340598
+creation_time: 1780966150036
+effective_trace_archival_retention: null
+experiment_id: '417924630574340598'
+last_update_time: 1780966150036
+lifecycle_stage: active
+name: weatherAUS_uluru_RF
+trace_location: null
+workspace: default
