@@ -39,13 +39,12 @@ jobs:
           python -c "
           import mlflow
           mlflow.set_tracking_uri('file:./mlruns')
-          mlflow.create_experiment('weatherAUS_Uluru_RF')
           print('experiment initialized')"
 
       - name: Run MLflow Project
         run: |
           cd MLProject
-          mlflow run . --env-manager local --experiment-name weatherAUS_Uluru_RF
+          mlflow run . --env-manager local
 
       - name: Inspect MLflow artifacts
         run: |
