@@ -24,6 +24,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install mlflow pandas numpy scikit-learn
 
+      - name: Initialize MLflow experiment
+        run: |
+          python -c "
+          import mlflow
+          mlflow.set_tracking_uri('file:./mlruns')
+          mlflow.set_experiment('weatherAUS_Uluru_RF')
+          print('experiment initialized')"
+
       - name: Set MLflow environment
         run: |
           mkdir -p MLProject/mlruns
