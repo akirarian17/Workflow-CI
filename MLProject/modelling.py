@@ -46,7 +46,9 @@ def train_model(
     mlflow.set_experiment("weatherAUS_uluru_RF")
 
 
-    with mlflow.start_run():
+    with mlflow.start_run() as run:
+        run_id = run.info.run_id
+
         mlflow.sklearn.autolog()
         model = RandomForestClassifier(
             n_estimators=100,
@@ -55,10 +57,7 @@ def train_model(
             
         model.fit(X_train, y_train)
 
-        mlflow.sklearn.log_model(
-            model,
-            "random_forest_model"
-        )
+        mlflow.sklearn.log_model(model, "random_forest_model")
 
         predictions = model.predict(X_test)
         
@@ -86,6 +85,9 @@ def train_model(
         print(f"Precision : {precision:.4f}")
         print(f"Recall    : {recall:.4f}")
         print(f"F1 Score  : {f1:.4f}")
+
+        with open("run_id.txt", "w") as f:
+            f.write(run_id)
 
 
 def main():
