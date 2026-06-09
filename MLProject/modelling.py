@@ -41,24 +41,25 @@ def train_model(
     y_train,
     y_test
 ):
-    # mlflow.set_tracking_uri("file:./mlruns")
-    # mlflow.set_experiment("weatherAUS_Uluru_RF")
+    mlflow.set_tracking_uri("file:./mlruns")
+    mlflow.set_experiment("weatherAUS_Uluru_RF")
 
     mlflow.sklearn.autolog()
 
-    model = RandomForestClassifier(
-        n_estimators=100,
-        random_state=42
-    )
     with mlflow.start_run():
+        model = RandomForestClassifier(
+            n_estimators=100,
+            random_state=42
+        )
+            
         model.fit(X_train, y_train)
-
-        predictions = model.predict(X_test)
 
         mlflow.sklearn.log_model(
             model,
             "random_forest_model"
         )
+
+        predictions = model.predict(X_test)
         
         accuracy = accuracy_score(
             y_test,
