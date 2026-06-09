@@ -1,0 +1,14 @@
+artifact_uri: file:///home/runner/work/Workflow-CI/Workflow-CI/MLProject/mlruns/667659483073823522/75fcea3bc9bd4bb099a26777175c7600/artifacts
+end_time: 1780967258292
+entry_point_name: ''
+experiment_id: '667659483073823522'
+lifecycle_stage: active
+run_id: 75fcea3bc9bd4bb099a26777175c7600
+run_name: charming-seal-55
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1780967249845
+status: 3
+tags: []
+user_id: runner
