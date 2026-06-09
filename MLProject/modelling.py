@@ -44,9 +44,9 @@ def train_model(
     mlflow.set_tracking_uri("file:./mlruns")
     mlflow.set_experiment("weatherAUS_Uluru_RF")
 
-    mlflow.sklearn.autolog()
 
     with mlflow.start_run():
+        mlflow.sklearn.autolog()
         model = RandomForestClassifier(
             n_estimators=100,
             random_state=42
