@@ -2,6 +2,9 @@ name: weatherAUS_rf
 
 conda_env: conda.yaml
 
+env:
+  MLFLOW_TRACKING_URI: file:./mlruns
+
 entry_points:
   main:
     command: "python modelling.py"
