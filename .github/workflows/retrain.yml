@@ -44,7 +44,7 @@ jobs:
       - name: Run MLflow Project
         run: |
           cd MLProject
-          python modelling.py
+          mlflow run . --env-manager local
 
       - name: Inspect MLflow artifacts
         run: |
