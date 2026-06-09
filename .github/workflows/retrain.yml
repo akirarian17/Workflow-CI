@@ -24,33 +24,47 @@ jobs:
           python -m pip install --upgrade pip
           pip install mlflow==2.21.0 pandas numpy scikit-learn
 
-      - name: Run MLflow Tracking Server
+      - name: Start MLflow Tracking Server
         run: |
-          mlflow server --host 127.0.0.1 --port 5000 &
+          mlflow server \
+            --host 127.0.0.1 \
+            --port 5000 \
+            --backend-store-uri sqlite:///mlflow.db \
+            --default-artifact-root ./mlruns &
           sleep 5
 
-      - name: Run MLProject Training
+      - name: Run MLflow Project
         env:
           MLFLOW_TRACKING_URI: http://127.0.0.1:5000
         run: |
-          mlflow run MLProject/ \
+          cd MLProject
+          mlflow run . \
             --env-manager=local \
-            --experiment-name="weatherAUS_uluru_RF"
+            --experiment-name="weatherAUS_uluru_RF" \
+            --backend local
 
       - name: Extract Run ID
+        env:
+          MLFLOW_TRACKING_URI: http://127.0.0.1:5000
         run: |
-          RUN_ID=$(cat run_id.txt)
+          RUN_ID=$(python -c "
+          import mlflow
+          client = mlflow.tracking.MlflowClient()
+          exp = client.get_experiment_by_name('weatherAUS_uluru_RF')
+          runs = client.search_runs([exp.experiment_id], order_by=['start_time DESC'])
+          print(runs[0].info.run_id)
+          ")
           echo "RUN_ID=$RUN_ID" >> $GITHUB_ENV
 
-      - name: Compress MLflow artifacts
+      - name: Build MLflow Docker Image
+        env:
+          MLFLOW_TRACKING_URI: http://127.0.0.1:5000
+          MLFLOW_DOCKER_IMAGE: python:3.12-slim
         run: |
-          zip -r mlruns_artifact.zip mlruns/
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: mlruns-artifact
-          path: mlruns_artifact.zip
+          mlflow models build-docker \
+            -m "runs:/${{ env.RUN_ID }}/random_forest_model" \
+            -n "${{ secrets.DOCKER_USERNAME }}/eksperimen_sml_akira-rian-satya-dhamma:latest" \
+            --env-manager=local
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -58,14 +72,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Docker image
-        run: |
-          mlflow models build-docker \
-            -m "runs:/${{ env.RUN_ID }}/random_forest_model" \
-            -n "${{ secrets.DOCKER_USERNAME }}/eksperimen_sml_akira-rian-satya-dhamma:latest" \
-            --env-manager=local
-
-      - name: Push Docker image
+      - name: Push Docker Image
         run: |
           docker push "${{ secrets.DOCKER_USERNAME }}/eksperimen_sml_akira-rian-satya-dhamma:latest"
 
