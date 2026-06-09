@@ -42,13 +42,8 @@ def train_model(
     y_test
 ):
     mlflow.set_tracking_uri("file:./mlruns")
+    mlflow.set_experiment("weatherAUS_Uluru_RF")
 
-    experiment_name = "weatherAUS_uluru_RF"
-
-    if mlflow.get_experiment_by_name(experiment_name) is None:
-        mlflow.create_experiment(experiment_name)
-
-    mlflow.set_experiment(experiment_name)
 
     with mlflow.start_run():
         mlflow.sklearn.autolog()
